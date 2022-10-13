@@ -14,6 +14,10 @@
 		85CF0A3028F83BF800759A3E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF0A2F28F83BF800759A3E /* MainTabBarController.swift */; };
 		85CF0A3228F83C0100759A3E /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF0A3128F83C0100759A3E /* GlobalConstants.swift */; };
 		85CF0A3428F83C1200759A3E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF0A3328F83C1200759A3E /* MainViewController.swift */; };
+		85CF0A3A28F8448A00759A3E /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF0A3928F8448A00759A3E /* BannerCell.swift */; };
+		85CF0A3D28F84C8200759A3E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF0A3C28F84C8200759A3E /* MainView.swift */; };
+		85CF0A3F28F860A100759A3E /* MenuCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF0A3E28F860A100759A3E /* MenuCells.swift */; };
+		85CF0A4128F8798700759A3E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF0A4028F8798700759A3E /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		85CF0A2F28F83BF800759A3E /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		85CF0A3128F83C0100759A3E /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		85CF0A3328F83C1200759A3E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		85CF0A3928F8448A00759A3E /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
+		85CF0A3C28F84C8200759A3E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		85CF0A3E28F860A100759A3E /* MenuCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCells.swift; sourceTree = "<group>"; };
+		85CF0A4028F8798700759A3E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,8 @@
 				85CF0A2F28F83BF800759A3E /* MainTabBarController.swift */,
 				85CF0A3328F83C1200759A3E /* MainViewController.swift */,
 				85CF0A1F28F83BD200759A3E /* ViewController.swift */,
+				85CF0A3B28F84C4300759A3E /* Views */,
+				85CF0A3828F8438600759A3E /* Cells */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -92,6 +102,24 @@
 				85CF0A2428F83BD400759A3E /* Assets.xcassets */,
 			);
 			path = Resorses;
+			sourceTree = "<group>";
+		};
+		85CF0A3828F8438600759A3E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				85CF0A3928F8448A00759A3E /* BannerCell.swift */,
+				85CF0A3E28F860A100759A3E /* MenuCells.swift */,
+				85CF0A4028F8798700759A3E /* TableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		85CF0A3B28F84C4300759A3E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				85CF0A3C28F84C8200759A3E /* MainView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,9 +192,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				85CF0A2028F83BD200759A3E /* ViewController.swift in Sources */,
+				85CF0A3D28F84C8200759A3E /* MainView.swift in Sources */,
+				85CF0A3A28F8448A00759A3E /* BannerCell.swift in Sources */,
 				85CF0A1C28F83BD200759A3E /* AppDelegate.swift in Sources */,
 				85CF0A3228F83C0100759A3E /* GlobalConstants.swift in Sources */,
+				85CF0A4128F8798700759A3E /* TableViewCell.swift in Sources */,
 				85CF0A3428F83C1200759A3E /* MainViewController.swift in Sources */,
+				85CF0A3F28F860A100759A3E /* MenuCells.swift in Sources */,
 				85CF0A3028F83BF800759A3E /* MainTabBarController.swift in Sources */,
 				85CF0A1E28F83BD200759A3E /* SceneDelegate.swift in Sources */,
 			);

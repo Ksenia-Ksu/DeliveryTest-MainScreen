@@ -19,7 +19,7 @@ final class MainTabBarController: UITabBarController {
     
     func tabBarSettings() {
         
-        self.tabBar.tintColor = .systemRed
+        self.tabBar.tintColor = Colors.red
         
         let menuScreen = MainViewController()
         let menuTabItem = UITabBarItem(title: MainTabBarInfo.Names.menu, image: UIImage(systemName: MainTabBarInfo.SFsymbols.menu), tag: 0)
