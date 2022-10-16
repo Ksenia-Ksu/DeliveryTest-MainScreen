@@ -87,21 +87,21 @@ final class TableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             
             imageViewCell.topAnchor.constraint(equalTo: self.topAnchor, constant: 15),
-            imageViewCell.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
+            imageViewCell.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15),
             imageViewCell.widthAnchor.constraint(equalToConstant: 120),
             imageViewCell.heightAnchor.constraint(equalToConstant: 120),
             
-            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 15),
             nameLabel.leftAnchor.constraint(equalTo: imageViewCell.rightAnchor, constant: 20),
-            nameLabel.rightAnchor.constraint(equalTo: self.rightAnchor),
+            nameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15),
             
             ingredientsLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
             ingredientsLabel.leftAnchor.constraint(equalTo: imageViewCell.rightAnchor, constant: 20),
-            ingredientsLabel.rightAnchor.constraint(equalTo: self.rightAnchor),
+            ingredientsLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15),
             ingredientsLabel.bottomAnchor.constraint(equalTo: orderButton.topAnchor, constant: -10),
             
-            orderButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
-            orderButton.rightAnchor.constraint(equalTo: self.rightAnchor),
+            orderButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15),
+            orderButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15),
            // orderButton.topAnchor.constraint(equalTo: ingredientsLabel.bottomAnchor, constant: 15),
             orderButton.heightAnchor.constraint(equalToConstant: 40),
             orderButton.widthAnchor.constraint(equalToConstant: 80),

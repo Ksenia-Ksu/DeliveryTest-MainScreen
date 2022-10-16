@@ -13,6 +13,8 @@ class TableViewCellBunner: UITableViewCell, UICollectionViewDelegateFlowLayout, 
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: ScreenSize.width - 80, height: 140)
         layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
         let bannerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         bannerCollectionView.showsHorizontalScrollIndicator = false
         bannerCollectionView.register(BannerCell.self, forCellWithReuseIdentifier: CellIDs.bannerCell)
@@ -69,6 +71,7 @@ class TableViewCellBunner: UITableViewCell, UICollectionViewDelegateFlowLayout, 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width - 90, height: collectionView.bounds.height)
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)

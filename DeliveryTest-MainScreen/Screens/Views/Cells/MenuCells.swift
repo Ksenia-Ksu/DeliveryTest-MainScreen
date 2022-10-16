@@ -47,8 +47,8 @@ final class MenuCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             
             menuButton.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 0),
-            menuButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
-            menuButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
+            menuButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15),
+            menuButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
             menuButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
             
         ])

@@ -51,9 +51,9 @@ class MainViewController: UIViewController {
         NSLayoutConstraint.activate([
             
             tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 0),
-            tableView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: 0),
-            tableView.rightAnchor.constraint(equalTo:  view.layoutMarginsGuide.rightAnchor, constant: 0),
-            tableView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
+            tableView.rightAnchor.constraint(equalTo:  view.rightAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             
         ])
         
@@ -85,7 +85,7 @@ class MainViewController: UIViewController {
     
 }
 
-extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         Data.buttonNamesArray.count
@@ -102,6 +102,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.menuButton.addTarget(self, action: #selector(butonTapped), for: .touchUpInside)
         return cell
     }
+    
     
     
     @objc func butonTapped(sender: UIButton) {
