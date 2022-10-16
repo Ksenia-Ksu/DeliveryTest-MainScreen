@@ -16,12 +16,11 @@ final class MainTabBarController: UITabBarController {
       
     }
     
-    
-    func tabBarSettings() {
+    private func tabBarSettings() {
         
         self.tabBar.tintColor = Colors.red
         
-        let menuScreen = MainViewController()
+        let menuScreen = MainScreenAssembly.createModule()
         let menuTabItem = UITabBarItem(title: MainTabBarInfo.Names.menu, image: UIImage(systemName: MainTabBarInfo.SFsymbols.menu), tag: 0)
         menuScreen.tabBarItem = menuTabItem
         let navFirst = UINavigationController(rootViewController: menuScreen)
@@ -39,7 +38,6 @@ final class MainTabBarController: UITabBarController {
         let basketScreen = ViewController()
         let basketItem = UITabBarItem(title: MainTabBarInfo.Names.basket, image: UIImage(systemName: MainTabBarInfo.SFsymbols.basket), tag: 1)
         basketScreen.tabBarItem = basketItem
-        
         
         self.viewControllers = [navFirst, contactsScreen, profileScreen, basketScreen]
         
