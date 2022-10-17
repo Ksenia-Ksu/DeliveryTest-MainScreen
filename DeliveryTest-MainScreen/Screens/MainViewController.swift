@@ -96,7 +96,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.menuButton.configuration?.title = Data.buttonNamesArray[indexPath.row]
         cell.menuButton.tag = indexPath.row
         arrayButtons.append(cell.menuButton)
-        if arrayButtons.count == 4 {
+        if arrayButtons.count >= 1 {
             buttonsColor(buttonsArray: arrayButtons, tag: 0)
         }
         cell.menuButton.addTarget(self, action: #selector(butonTapped), for: .touchUpInside)

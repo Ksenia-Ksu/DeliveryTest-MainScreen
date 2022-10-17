@@ -14,7 +14,7 @@ final class TableViewHeaderMenu:  UITableViewHeaderFooterView {
     let menuCollectionView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: ScreenSize.width/3, height: 60)
+        layout.itemSize = CGSize(width: ScreenSize.width/3.3, height: 60)
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0

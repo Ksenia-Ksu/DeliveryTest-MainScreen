@@ -39,8 +39,8 @@ final class BannerCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             
             bannerImageView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 0),
-            bannerImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15),
-            bannerImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
+            bannerImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
+            bannerImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -5),
             bannerImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
         
         ])
