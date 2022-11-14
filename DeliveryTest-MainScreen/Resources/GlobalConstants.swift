@@ -50,7 +50,7 @@ struct IDs {
     static let headerTableView = "Table Header"
 }
 
-struct Data {
+struct StaticNames {
     
     static let bannerImagesArray = ["0", "1", "2", "3", "4"]
     static let buttonNamesArray = ["Пицца", "Комбо", "Десерты", "Напитки"]

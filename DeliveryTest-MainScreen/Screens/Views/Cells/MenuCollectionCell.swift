@@ -8,9 +8,21 @@
 
 import UIKit
 
-final class MenuCell: UICollectionViewCell {
+final class MenuCollectionCell: UICollectionViewCell {
     
-    let menuButton: UIButton = {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupCell()
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupCell()
+    }
+    
+    
+    lazy var menuButton: UIButton = {
         var config = UIButton.Configuration.filled()
         config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
             var outgoing = incoming
@@ -27,18 +39,6 @@ final class MenuCell: UICollectionViewCell {
         return menuButton
     }()
     
-     
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupCell()
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupCell()
-    }
     
     private func setupCell() {
         

@@ -18,7 +18,6 @@ protocol MainViewPresenterProtocol: AnyObject {
     func getItems()
     var items: [Item]? { get set }
     
-    
 }
 
 class MainPresenter: MainViewPresenterProtocol {

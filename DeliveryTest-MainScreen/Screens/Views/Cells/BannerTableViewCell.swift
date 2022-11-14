@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TableViewCellBunner: UITableViewCell, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+class BannerTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let bannerCollectionView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -17,7 +17,7 @@ class TableViewCellBunner: UITableViewCell, UICollectionViewDelegateFlowLayout, 
         layout.minimumLineSpacing = 0
         let bannerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         bannerCollectionView.showsHorizontalScrollIndicator = false
-        bannerCollectionView.register(BannerCell.self, forCellWithReuseIdentifier: CellIDs.bannerCell)
+        bannerCollectionView.register(BannerCollectionCell.self, forCellWithReuseIdentifier: CellIDs.bannerCell)
         bannerCollectionView.translatesAutoresizingMaskIntoConstraints = false
         return bannerCollectionView
         
@@ -25,13 +25,11 @@ class TableViewCellBunner: UITableViewCell, UICollectionViewDelegateFlowLayout, 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: CellIDs.bannerTableViewCell)
-        
-        
+      
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupCell()
     }
     
     override func layoutSubviews() {
@@ -39,11 +37,11 @@ class TableViewCellBunner: UITableViewCell, UICollectionViewDelegateFlowLayout, 
         bannerCollectionView.delegate = self
         bannerCollectionView.dataSource = self
         self.addSubview(bannerCollectionView)
-        setupCell()
+        setupViews()
     }
     
     
-    private func setupCell() {
+    private func setupViews() {
         
         NSLayoutConstraint.activate([
             
@@ -58,12 +56,12 @@ class TableViewCellBunner: UITableViewCell, UICollectionViewDelegateFlowLayout, 
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        Data.bannerImagesArray.count
+        StaticNames.bannerImagesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIDs.bannerCell, for: indexPath) as! BannerCell
-        cell.bannerImageView.image = UIImage(named: Data.bannerImagesArray[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIDs.bannerCell, for: indexPath) as! BannerCollectionCell
+        cell.confugureBannerCell(StaticNames.bannerImagesArray[indexPath.row])
         return cell
     }
     

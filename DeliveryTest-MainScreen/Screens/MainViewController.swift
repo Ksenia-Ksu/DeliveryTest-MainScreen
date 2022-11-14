@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(TableViewCell.self, forCellReuseIdentifier: CellIDs.tableViewCell)
-        tableView.register(TableViewCellBunner.self, forCellReuseIdentifier: CellIDs.bannerTableViewCell)
+        tableView.register(BannerTableViewCell.self, forCellReuseIdentifier: CellIDs.bannerTableViewCell)
         tableView.rowHeight = 150
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-                
+        
         let cityButton = UIBarButtonItem(title: (City.cityArray[0] + (" ↓")), style: .plain, target: self,  action: nil)
         
         var menuChildrens = [UIMenuElement]()
@@ -88,28 +88,28 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        Data.buttonNamesArray.count
+        StaticNames.buttonNamesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIDs.menuCell, for: indexPath) as! MenuCell
-        cell.menuButton.configuration?.title = Data.buttonNamesArray[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIDs.menuCell, for: indexPath) as! MenuCollectionCell
+        cell.menuButton.configuration?.title = StaticNames.buttonNamesArray[indexPath.row]
         cell.menuButton.tag = indexPath.row
         arrayButtons.append(cell.menuButton)
         if arrayButtons.count >= 1 {
-            buttonsColor(buttonsArray: arrayButtons, tag: 0)
+            categoryButtonsChangeColor(buttonsArray: arrayButtons, tag: 0)
         }
-        cell.menuButton.addTarget(self, action: #selector(butonTapped), for: .touchUpInside)
+        cell.menuButton.addTarget(self, action: #selector(categoryButtonTapped), for: .touchUpInside)
         return cell
     }
     
     
     
-    @objc func butonTapped(sender: UIButton) {
+    @objc func categoryButtonTapped(sender: UIButton) {
         
-        buttonsColor(buttonsArray: arrayButtons, tag: sender.tag)
+        categoryButtonsChangeColor(buttonsArray: arrayButtons, tag: sender.tag)
         
-        let name = Data.foodNames[sender.tag]
+        let name = StaticNames.foodNames[sender.tag]
         networkService.getItems(foodName: name) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async { [self] in
@@ -124,17 +124,11 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
     }
     
-    private func buttonsColor(buttonsArray: [UIButton], tag: Int){
+    private func categoryButtonsChangeColor(buttonsArray: [UIButton], tag: Int){
         
         for (index,button) in buttonsArray.enumerated() {
-            if index == tag {
-                button.configuration?.baseBackgroundColor = Colors.pink
-                button.configuration?.baseForegroundColor = Colors.red
-            } else {
-                button.configuration?.baseBackgroundColor = .white
-                button.configuration?.baseForegroundColor = Colors.pink
-                
-            }
+            index == tag ? headerMenu.selectedCategory(button, isTapped: true) : headerMenu.selectedCategory(button, isTapped: false)
+            
         }
     }
 }
@@ -155,12 +149,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CellIDs.bannerTableViewCell, for: indexPath) as! TableViewCellBunner
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellIDs.bannerTableViewCell, for: indexPath) as! BannerTableViewCell
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIDs.tableViewCell, for: indexPath) as! TableViewCell
             if let item = presenter.items?[indexPath.row] {
-                cell.configCell(title: item.title ?? "No info")
+                cell.configureMenuCell(title: item.title ?? "No info")
                 cell.imageViewCell.imageFromUrl(urlString: item.image ?? "")
             }
             return cell

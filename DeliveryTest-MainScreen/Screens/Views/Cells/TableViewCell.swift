@@ -17,10 +17,10 @@ final class TableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupCell()
+        
     }
     
-    let imageViewCell: UIImageView = {
+    lazy var imageViewCell: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
@@ -30,7 +30,7 @@ final class TableViewCell: UITableViewCell {
         return imageView
     }()
     
-   private let nameLabel: UILabel = {
+   private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.textAlignment = .left
         nameLabel.textColor = Colors.nameLabel
@@ -41,7 +41,7 @@ final class TableViewCell: UITableViewCell {
         return nameLabel
     }()
     
-    private let ingredientsLabel: UILabel = {
+    private lazy var ingredientsLabel: UILabel = {
         let ingredientsLabel = UILabel()
         ingredientsLabel.textAlignment = .left
         ingredientsLabel.numberOfLines = 0
@@ -52,7 +52,7 @@ final class TableViewCell: UITableViewCell {
         return ingredientsLabel
     }()
     
-    let orderButton: UIButton = {
+    lazy var orderButton: UIButton = {
         var config = UIButton.Configuration.plain()
         config.title = "от 345"
         config.baseForegroundColor = Colors.red
@@ -68,11 +68,9 @@ final class TableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setupCell()
-        
     }
     
-    func configCell(title: String) {
+    func configureMenuCell(title: String) {
         nameLabel.text = title
         ingredientsLabel.text = title
     }
@@ -102,7 +100,6 @@ final class TableViewCell: UITableViewCell {
             
             orderButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15),
             orderButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15),
-           // orderButton.topAnchor.constraint(equalTo: ingredientsLabel.bottomAnchor, constant: 15),
             orderButton.heightAnchor.constraint(equalToConstant: 40),
             orderButton.widthAnchor.constraint(equalToConstant: 80),
         ])

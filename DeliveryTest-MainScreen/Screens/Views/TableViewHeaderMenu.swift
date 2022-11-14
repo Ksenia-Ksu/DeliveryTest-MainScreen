@@ -20,7 +20,7 @@ final class TableViewHeaderMenu:  UITableViewHeaderFooterView {
         layout.minimumLineSpacing = 0
         let menuCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         menuCollectionView.showsHorizontalScrollIndicator = false
-        menuCollectionView.register(MenuCell.self, forCellWithReuseIdentifier: CellIDs.menuCell)
+        menuCollectionView.register(MenuCollectionCell.self, forCellWithReuseIdentifier: CellIDs.menuCell)
         menuCollectionView.translatesAutoresizingMaskIntoConstraints = false
         return menuCollectionView
     }()
@@ -35,7 +35,18 @@ final class TableViewHeaderMenu:  UITableViewHeaderFooterView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        //  setupView()
+        
+    }
+    
+    func selectedCategory(_ button: UIButton, isTapped: Bool) {
+        
+        if isTapped {
+            button.configuration?.baseBackgroundColor = Colors.pink
+            button.configuration?.baseForegroundColor = Colors.red
+        } else {
+            button.configuration?.baseBackgroundColor = .white
+            button.configuration?.baseForegroundColor = Colors.pink
+        }
     }
     
     private func setupView()  {
@@ -47,13 +58,9 @@ final class TableViewHeaderMenu:  UITableViewHeaderFooterView {
             menuCollectionView.leftAnchor.constraint(equalTo:  self.leftAnchor, constant: 0),
             menuCollectionView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
             menuCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
-         
             
         ])
     }
-    
-    
-    
 }
 
 
