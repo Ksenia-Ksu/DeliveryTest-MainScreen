@@ -12,13 +12,13 @@ final class MenuCollectionCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupCell()
+        setupViews()
     }
     
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupCell()
+       
     }
     
     
@@ -40,16 +40,16 @@ final class MenuCollectionCell: UICollectionViewCell {
     }()
     
     
-    private func setupCell() {
+    private func setupViews() {
         
-        self.addSubview(menuButton)
+        contentView.addSubview(menuButton)
         
         NSLayoutConstraint.activate([
             
-            menuButton.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 0),
-            menuButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
-            menuButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
-            menuButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
+            menuButton.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 0),
+            menuButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            menuButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
+            menuButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
             
         ])
         

@@ -23,7 +23,7 @@ final class MainTabBarController: UITabBarController {
         let menuScreen = MainScreenAssembly.createModule()
         let menuTabItem = UITabBarItem(title: MainTabBarInfo.Names.menu, image: UIImage(systemName: MainTabBarInfo.SFsymbols.menu), tag: 0)
         menuScreen.tabBarItem = menuTabItem
-        let navFirst = UINavigationController(rootViewController: menuScreen)
+        let MainNavigationConroller = UINavigationController(rootViewController: menuScreen)
         
         let contactsScreen = EmptyViewController()
         let contactsItem = UITabBarItem(title: MainTabBarInfo.Names.contacts, image: UIImage(systemName: MainTabBarInfo.SFsymbols.contacts), tag: 1)
@@ -39,7 +39,7 @@ final class MainTabBarController: UITabBarController {
         let basketItem = UITabBarItem(title: MainTabBarInfo.Names.basket, image: UIImage(systemName: MainTabBarInfo.SFsymbols.basket), tag: 1)
         basketScreen.tabBarItem = basketItem
         
-        self.viewControllers = [navFirst, contactsScreen, profileScreen, basketScreen]
+        self.viewControllers = [MainNavigationConroller, contactsScreen, profileScreen, basketScreen]
         
     }
     

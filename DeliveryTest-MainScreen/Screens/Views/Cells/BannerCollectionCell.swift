@@ -34,14 +34,14 @@ final class BannerCollectionCell: UICollectionViewCell {
     
     private func setupViews() {
         
-        self.addSubview(bannerImageView)
+        contentView.addSubview(bannerImageView)
         
         NSLayoutConstraint.activate([
             
-            bannerImageView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 0),
-            bannerImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
-            bannerImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -5),
-            bannerImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
+            bannerImageView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 0),
+            bannerImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            bannerImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5),
+            bannerImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
             
         ])
     }

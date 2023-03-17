@@ -17,6 +17,11 @@ class MainViewController: UIViewController {
     
     var arrayButtons = [UIButton]()
     
+    private enum SectionType: Int, CaseIterable {
+        case banners
+        case menu
+    }
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(TableViewCell.self, forCellReuseIdentifier: CellIDs.tableViewCell)
@@ -64,7 +69,7 @@ class MainViewController: UIViewController {
         
         let cityButton = UIBarButtonItem(title: (City.cityArray[0] + (" ↓")), style: .plain, target: self,  action: nil)
         
-        var menuChildrens = [UIMenuElement]()
+        var menuCities = [UIMenuElement]()
         
         for city in City.cityArray {
             
@@ -72,10 +77,10 @@ class MainViewController: UIViewController {
                 print(city)
             }
             
-            menuChildrens.append(item)
+            menuCities.append(item)
         }
         
-        let cityMenu = UIMenu(title: NSLocalizedString("Выберите город", comment: ""), identifier: UIMenu.Identifier("cityMenu"), options: .singleSelection, children: menuChildrens)
+        let cityMenu = UIMenu(title: NSLocalizedString("Выберите город", comment: ""), identifier: UIMenu.Identifier("cityMenu"), options: .singleSelection, children: menuCities)
         
         cityButton.menu = cityMenu
         
@@ -136,22 +141,33 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        SectionType.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        
+        let sectionType = SectionType.init(rawValue: section)
+        
+        switch sectionType {
+        case .banners:
             return 1
-        } else  {
+        default:
             return presenter.items?.count ?? 0
         }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        
+        let section = indexPath.section
+        
+        let sectionType = SectionType.init(rawValue: section)
+        
+        switch sectionType {
+        case .banners:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIDs.bannerTableViewCell, for: indexPath) as! BannerTableViewCell
             return cell
-        } else {
+        default:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIDs.tableViewCell, for: indexPath) as! TableViewCell
             if let item = presenter.items?[indexPath.row] {
                 cell.configureMenuCell(title: item.title ?? "No info")
@@ -163,7 +179,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section != 0 {
+        
+        let sectionType = SectionType.init(rawValue: section)
+        
+        if sectionType != .banners {
             return headerMenu
         } else {
             return nil
@@ -171,7 +190,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
+        
+        let sectionType = SectionType.init(rawValue: section)
+        
+        if sectionType ==  .banners {
             return 0
         } else {
             return 70

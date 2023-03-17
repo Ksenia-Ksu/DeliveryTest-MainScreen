@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BannerTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+class BannerTableViewCell: UITableViewCell {
     
     let bannerCollectionView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -25,35 +25,31 @@ class BannerTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLayout, 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: CellIDs.bannerTableViewCell)
-      
+        bannerCollectionView.delegate = self
+        bannerCollectionView.dataSource = self
+        contentView.addSubview(bannerCollectionView)
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        bannerCollectionView.delegate = self
-        bannerCollectionView.dataSource = self
-        self.addSubview(bannerCollectionView)
-        setupViews()
-    }
-    
-    
+        
     private func setupViews() {
         
         NSLayoutConstraint.activate([
             
-            bannerCollectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            bannerCollectionView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
-            bannerCollectionView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
-            bannerCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 10),
+            bannerCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            bannerCollectionView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0),
+            bannerCollectionView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0),
+            bannerCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10),
             
         ])
     }
-    
-    
+}
+
+extension BannerTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         StaticNames.bannerImagesArray.count
@@ -75,5 +71,4 @@ class BannerTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLayout, 
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
     }
     
-   
 }
